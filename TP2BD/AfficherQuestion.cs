@@ -47,7 +47,7 @@ namespace TP2BD
         }
 
         /// <summary>
-        /// 
+        /// Affiche les réponses
         /// </summary>
         private void GetReponses()
         {
