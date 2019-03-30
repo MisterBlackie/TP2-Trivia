@@ -21,28 +21,31 @@ namespace TP2BD
         {
             InitializeComponent();
             conn = Connection;
-            CodeCategorie = nameof(Categorie);
+          Categorie = Form1.CouleurCat;
+            GetQuestion();
+           
         }
 
         private void GetQuestion() {
-            OracleCommand command = new OracleCommand("TRIVIA", conn);
-            command.CommandText = "GetQuestion";
-            command.CommandType = CommandType.StoredProcedure;
+            OracleCommand commandAfficherQuest = new OracleCommand("TRIVIA", conn);
+            commandAfficherQuest.CommandText = "Trivia.chercherquestion";
+            commandAfficherQuest.CommandType = CommandType.StoredProcedure;
 
-            OracleParameter param = new OracleParameter("pcode", OracleDbType.Int32);
-            param.Direction = ParameterDirection.Input;
-            param.Value = CodeCategorie;
+            
 
-            OracleParameter returnParam = new OracleParameter("res", OracleDbType.RefCursor);
-            returnParam.Direction = ParameterDirection.ReturnValue;
+            OracleParameter EnonceParam = new OracleParameter("enonce", OracleDbType.RefCursor);
+            EnonceParam.Direction = ParameterDirection.ReturnValue;
+            commandAfficherQuest.Parameters.Add(EnonceParam);
 
-            command.Parameters.Add(returnParam);
-            command.Parameters.Add(param);
+            OracleParameter ParamCodeCat = new OracleParameter("codecategorie", OracleDbType.Int32);
+            ParamCodeCat.Direction = ParameterDirection.Input;
+            ParamCodeCat.Value = Form1.CouleurCat;
+            commandAfficherQuest.Parameters.Add(ParamCodeCat);
 
-            OracleDataReader Reader = command.ExecuteReader();
+            OracleDataReader Reader = commandAfficherQuest.ExecuteReader();
             while (Reader.Read()) {
-                IDQuestion = Reader.GetInt32(0);
-                LB_Question.Text = Reader.GetString(1);
+                //IDQuestion = Reader.GetInt32(0);
+                LB_Question.Text = Reader.GetString(0);
             }
         }
 

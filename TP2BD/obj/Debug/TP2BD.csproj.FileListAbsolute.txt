@@ -35,3 +35,5 @@ C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csproj.CoreComp
 C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.exe
 C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.pdb
 C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Choix_Categorie.resources
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Creer.resources
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Joueur.resources
