@@ -12,7 +12,7 @@ namespace TP2BD
 {
     public partial class Form1 : Form
     {
-
+        public static ECodeCouleur CouleurCat;
         private OracleConnection conn;
         private PlayerList ListeJoueur;
         public Form1()
@@ -45,10 +45,12 @@ namespace TP2BD
 
         private void JouerTour() {
             Roulette.Tourner();
-            ECodeCouleur CouleurCat = Roulette.GetCouleur();
+            CouleurCat = Roulette.GetCouleur();
 
             if (CouleurCat == ECodeCouleur.BL) {
                 // On permet au joueur de choisir sa couleur
+                Choix_Categorie m = new Choix_Categorie();
+                m.ShowDialog();
             }
 
             AfficherQuestion Form = new AfficherQuestion(ref conn, CouleurCat);
@@ -81,5 +83,7 @@ namespace TP2BD
         {
             JouerTour();
         }
+
+       
     }
 }

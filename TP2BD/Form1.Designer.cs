@@ -51,6 +51,7 @@
             this.Roulette.Size = new System.Drawing.Size(330, 426);
             this.Roulette.TabIndex = 5;
             this.Roulette.TabStop = false;
+        
             // 
             // groupBox1
             // 

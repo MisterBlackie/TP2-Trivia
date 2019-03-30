@@ -53,6 +53,12 @@
     <Compile Include="AfficherQuestion.Designer.cs">
       <DependentUpon>AfficherQuestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Choix_Categorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Choix_Categorie.Designer.cs">
+      <DependentUpon>Choix_Categorie.cs</DependentUpon>
+    </Compile>
     <Compile Include="ColorRoulette.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </Compile>
     <EmbeddedResource Include="AfficherQuestion.resx">
       <DependentUpon>AfficherQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Choix_Categorie.resx">
+      <DependentUpon>Choix_Categorie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ColorRoulette.resx">
       <DependentUpon>ColorRoulette.cs</DependentUpon>

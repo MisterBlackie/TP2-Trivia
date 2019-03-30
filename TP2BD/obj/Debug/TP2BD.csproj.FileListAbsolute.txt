@@ -22,3 +22,16 @@ d:\Users\201662434\Desktop\TP2BD\TP2BD\bin\Debug\TP2BD.exe
 d:\Users\201662434\Desktop\TP2BD\TP2BD\bin\Debug\TP2BD.pdb
 d:\Users\201662434\Desktop\TP2BD\TP2BD\obj\Debug\TP2BD.csproj.CopyComplete
 d:\Users\201662434\Desktop\TP2BD\TP2BD\obj\Debug\TP2BD.AfficherQuestion.resources
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\bin\Debug\TP2BD.exe.config
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\bin\Debug\TP2BD.exe
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\bin\Debug\TP2BD.pdb
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csprojResolveAssemblyReference.cache
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.AfficherQuestion.resources
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.ColorRoulette.resources
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Form1.resources
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Properties.Resources.resources
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csproj.GenerateResource.Cache
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csproj.CoreCompileInputs.cache
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.exe
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.pdb
+C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Choix_Categorie.resources
