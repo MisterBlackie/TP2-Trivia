@@ -15,16 +15,17 @@ namespace TP2BD
     {
         private OracleConnection conn;
         private int IDQuestion;
-        private string CodeCategorie;
+        private int NumeroBonneReponse; // Le numéro du radio button contenant la bonne réponse
+        public bool BienRepondu = false;
 
         public AfficherQuestion(ref OracleConnection Connection, ECodeCouleur Categorie)
         {
             InitializeComponent();
             conn = Connection;
-          Categorie = Form1.CouleurCat;
+            Categorie = Form1.CouleurCat;
             GetQuestion();
             GetReponses();
-           
+
         }
 
         private void GetQuestion() {
@@ -32,7 +33,7 @@ namespace TP2BD
             commandAfficherQuest.CommandText = "Trivia.chercherquestion";
             commandAfficherQuest.CommandType = CommandType.StoredProcedure;
 
-            
+
 
             OracleParameter EnonceParam = new OracleParameter("enonce", OracleDbType.RefCursor);
             EnonceParam.Direction = ParameterDirection.ReturnValue;
@@ -45,9 +46,27 @@ namespace TP2BD
 
             OracleDataReader Reader = commandAfficherQuest.ExecuteReader();
             while (Reader.Read()) {
-                
+
                 LB_Question.Text = Reader.GetString(0);
                 IDQuestion = Reader.GetInt32(1);
+            }
+        }
+
+        
+        public void ConfirmerReponse() {
+            switch (NumeroBonneReponse) {
+                case 1:
+                    BienRepondu = RB_Rep1.Checked;
+                    break;
+                case 2:
+                    BienRepondu = RB_Rep2.Checked;
+                    break;
+                case 3:
+                    BienRepondu = RB_Rep3.Checked;
+                    break;
+                case 4:
+                    BienRepondu = RB_Rep4.Checked;
+                    break;
             }
         }
 
@@ -82,23 +101,38 @@ namespace TP2BD
             OracleDataReader Reader = commandAfficherRep.ExecuteReader();
             while (Reader.Read())
             {
-                if (count == 0)
-                { RB_Rep1.Text = Reader.GetString(0); }
-                if (count == 1)
-                { RB_Rep2.Text = Reader.GetString(0); }
-                if (count == 2)
-                { RB_Rep3.Text = Reader.GetString(0); }
-                if (count == 3)
-                { RB_Rep4.Text = Reader.GetString(0); }
+                if (count == 0) {
+                    RB_Rep1.Text = Reader.GetString(0);
+                    NumeroBonneReponse = 1;
+                }
+                if (count == 1) {
+                    RB_Rep2.Text = Reader.GetString(0);
+                    NumeroBonneReponse = 2;
+                }
+                if (count == 2) {
+                    RB_Rep3.Text = Reader.GetString(0);
+                    NumeroBonneReponse = 3;
+                }
+                if (count == 3) {
+                    RB_Rep4.Text = Reader.GetString(0);
+                    NumeroBonneReponse = 4;
+                }
                 count++;
                
             }
 
         }
 
-        private void reponseButton1_CheckedChanged(object sender, EventArgs e)
+        private void AfficherQuestion_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ConfirmerReponse();
+        }
 
+        private void BTN_Confirm_Click(object sender, EventArgs e)
+        {
+            if (!RB_Rep1.Checked && !RB_Rep2.Checked && !RB_Rep3.Checked && !RB_Rep4.Checked) {
+                DialogResult = DialogResult.None;
+            }
         }
     }
 }

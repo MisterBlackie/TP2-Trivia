@@ -11,6 +11,10 @@ namespace TP2BD
         private List<Player> Liste { get; set; }
         private int IndexPlyAyantTour;
 
+        public PlayerList() {
+            Liste = new List<Player>();
+        }
+
         public void Add(Player Joueur) {
             Liste.Add(Joueur);
         }
@@ -58,7 +62,10 @@ namespace TP2BD
         /// </summary>
         /// <returns>Player ayant le tour</returns>
         public Player GetJoueur() {
-            return Liste.ElementAt(IndexPlyAyantTour);
+            if (Liste.Count == 0)
+                return null;
+            else
+                return Liste.ElementAt(IndexPlyAyantTour);
         }
     }
 }

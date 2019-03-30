@@ -37,3 +37,19 @@ C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.pdb
 C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Choix_Categorie.resources
 C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Creer.resources
 C:\Users\jimba\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Joueur.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\bin\Debug\TP2BD.exe.config
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\bin\Debug\TP2BD.exe
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\bin\Debug\TP2BD.pdb
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csprojAssemblyReference.cache
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.AfficherQuestion.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Choix_Categorie.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.ColorRoulette.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Creer.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Form1.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Joueur.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.Properties.Resources.resources
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csproj.GenerateResource.cache
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csproj.CoreCompileInputs.cache
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.csproj.CopyComplete
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.exe
+C:\Users\Alexandre Tremblay\Documents\GitHub\TP2-Trivia\TP2BD\obj\Debug\TP2BD.pdb

@@ -34,6 +34,7 @@
             this.RB_Rep3 = new TP2BD.ReponseButton();
             this.RB_Rep2 = new TP2BD.ReponseButton();
             this.RB_Rep1 = new TP2BD.ReponseButton();
+            this.BTN_Confirm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -103,21 +104,38 @@
             this.RB_Rep1.TabStop = true;
             this.RB_Rep1.Text = "reponseButton1";
             this.RB_Rep1.UseVisualStyleBackColor = true;
-            this.RB_Rep1.CheckedChanged += new System.EventHandler(this.reponseButton1_CheckedChanged);
+            // 
+            // BTN_Confirm
+            // 
+            this.BTN_Confirm.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BTN_Confirm.Location = new System.Drawing.Point(606, 132);
+            this.BTN_Confirm.Name = "BTN_Confirm";
+            this.BTN_Confirm.Size = new System.Drawing.Size(117, 36);
+            this.BTN_Confirm.TabIndex = 6;
+            this.BTN_Confirm.Text = "Confirmer";
+            this.BTN_Confirm.UseVisualStyleBackColor = true;
+            this.BTN_Confirm.Click += new System.EventHandler(this.BTN_Confirm_Click);
             // 
             // AfficherQuestion
             // 
+            this.AcceptButton = this.BTN_Confirm;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 180);
+            this.ControlBox = false;
+            this.Controls.Add(this.BTN_Confirm);
             this.Controls.Add(this.LB_Question);
             this.Controls.Add(this.RB_Rep4);
             this.Controls.Add(this.RB_Rep3);
             this.Controls.Add(this.RB_Rep2);
             this.Controls.Add(this.RB_Rep1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AfficherQuestion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Question";
+            this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AfficherQuestion_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +149,6 @@
         private ReponseButton RB_Rep3;
         private ReponseButton RB_Rep4;
         private System.Windows.Forms.Label LB_Question;
+        private System.Windows.Forms.Button BTN_Confirm;
     }
 }
