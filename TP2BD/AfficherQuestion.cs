@@ -23,6 +23,7 @@ namespace TP2BD
             conn = Connection;
           Categorie = Form1.CouleurCat;
             GetQuestion();
+            GetReponses();
            
         }
 
@@ -55,9 +56,44 @@ namespace TP2BD
         /// </summary>
         private void GetReponses()
         {
-            OracleCommand command = new OracleCommand("TRIVIA", conn);
-            command.CommandText = "Getreponse";
-            command.CommandType = CommandType.StoredProcedure;
+            OracleCommand commandAfficherRep = new OracleCommand("TRIVIA", conn);
+            commandAfficherRep.CommandText = "trivia.Getreponse";
+            commandAfficherRep.CommandType = CommandType.StoredProcedure;
+
+            OracleParameter DescParam = new OracleParameter("description", OracleDbType.RefCursor);
+            DescParam.Direction = ParameterDirection.ReturnValue;
+            commandAfficherRep.Parameters.Add(DescParam);
+
+            OracleParameter orapamnumQuestion = new OracleParameter("numquestion", OracleDbType.Int32, 6);
+            orapamnumQuestion.Direction = ParameterDirection.Input;
+            OracleCommand orapnum = new OracleCommand("SELECT numquestion FROM questions where EnonceQuestion =" + "'" + LB_Question.Text + "'", conn);
+
+
+            OracleDataReader numReader = orapnum.ExecuteReader();
+            int num = 0;
+            while (numReader.Read())
+            {
+                num = numReader.GetInt32(0);
+            }
+
+            orapamnumQuestion.Value = num;
+            commandAfficherRep.Parameters.Add(orapamnumQuestion);
+            int count = 0;
+            OracleDataReader Reader = commandAfficherRep.ExecuteReader();
+            while (Reader.Read())
+            {
+                if (count == 0)
+                { RB_Rep1.Text = Reader.GetString(0); }
+                if (count == 1)
+                { RB_Rep2.Text = Reader.GetString(0); }
+                if (count == 2)
+                { RB_Rep3.Text = Reader.GetString(0); }
+                if (count == 3)
+                { RB_Rep4.Text = Reader.GetString(0); }
+                count++;
+               
+            }
+
         }
 
         private void reponseButton1_CheckedChanged(object sender, EventArgs e)
