@@ -44,8 +44,9 @@ namespace TP2BD
 
             OracleDataReader Reader = commandAfficherQuest.ExecuteReader();
             while (Reader.Read()) {
-                //IDQuestion = Reader.GetInt32(0);
+                
                 LB_Question.Text = Reader.GetString(0);
+                IDQuestion = Reader.GetInt32(1);
             }
         }
 
