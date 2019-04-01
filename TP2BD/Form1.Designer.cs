@@ -35,6 +35,7 @@
             this.LB_NomJoueur = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Roulette)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +52,6 @@
             this.Roulette.Size = new System.Drawing.Size(330, 426);
             this.Roulette.TabIndex = 5;
             this.Roulette.TabStop = false;
-        
             // 
             // groupBox1
             // 
@@ -104,11 +104,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Score";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(712, 445);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Quitter";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(821, 488);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Roulette);
@@ -130,6 +141,7 @@
         private System.Windows.Forms.Label LB_NomJoueur;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

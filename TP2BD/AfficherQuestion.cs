@@ -129,6 +129,8 @@ namespace TP2BD
             ConfirmerReponse();
         }
 
+    
+
         private void BTN_Confirm_Click(object sender, EventArgs e)
         {
             if (!RB_Rep1.Checked && !RB_Rep2.Checked && !RB_Rep3.Checked && !RB_Rep4.Checked) {

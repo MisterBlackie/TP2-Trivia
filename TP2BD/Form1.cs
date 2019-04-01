@@ -84,6 +84,22 @@ namespace TP2BD
             JouerTour();
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ResetFlag();
+            this.Close();
+        }
+
+        private void ResetFlag()
+        {
+            OracleCommand commandResetFlag = new OracleCommand("TRIVIA", conn);
+            commandResetFlag.CommandText = "trivia.ResetFlag";
+            commandResetFlag.CommandType = CommandType.StoredProcedure;
+
+            OracleParameter ParamCodeQuest = new OracleParameter("codecategorie", OracleDbType.Int32);
+            ParamCodeQuest.Value = 0;
+            ParamCodeQuest.Direction = ParameterDirection.Input;
+            commandResetFlag.Parameters.Add(ParamCodeQuest);
+        }
     }
 }
