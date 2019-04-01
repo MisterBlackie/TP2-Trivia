@@ -39,10 +39,11 @@ namespace TP2BD
             EnonceParam.Direction = ParameterDirection.ReturnValue;
             commandAfficherQuest.Parameters.Add(EnonceParam);
 
-            OracleParameter ParamCodeCat = new OracleParameter("codecategorie", OracleDbType.Int32);
-            ParamCodeCat.Direction = ParameterDirection.Input;
+            OracleParameter ParamCodeCat = new OracleParameter("codecategorie", OracleDbType.Char);
             ParamCodeCat.Value = Form1.CouleurCat;
+            ParamCodeCat.Direction = ParameterDirection.Input;
             commandAfficherQuest.Parameters.Add(ParamCodeCat);
+            MessageBox.Show(ParamCodeCat.Value.ToString());
 
             OracleDataReader Reader = commandAfficherQuest.ExecuteReader();
             while (Reader.Read()) {
