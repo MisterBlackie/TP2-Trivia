@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2BD
 {
-    class PlayerList
+    public class PlayerList
     {
         private List<Player> Liste { get; set; }
         private int IndexPlyAyantTour;
@@ -33,6 +33,10 @@ namespace TP2BD
             }
 
             return false;
+        }
+
+        public bool Remove(Player Joueur) {
+            return Remove(Joueur.GetAlias());
         }
 
         public Player FindPlayer(string Alias) {

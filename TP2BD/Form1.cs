@@ -27,6 +27,15 @@ namespace TP2BD
             ConnectToDB();
         }
 
+        private void CreerPartie() {
+            CreerPartie Form = new CreerPartie(conn);
+            Form.ShowDialog();
+            if (Form.DialogResult != DialogResult.OK)
+                this.Close();
+            else
+              ListeJoueur = Form.ListeJoueur;
+        }
+
         private void ConnectToDB() {
             string ChaineConnexion = "Data Source=(DESCRIPTION="
                                      + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)"
@@ -100,6 +109,12 @@ namespace TP2BD
             ParamCodeQuest.Value = 0;
             ParamCodeQuest.Direction = ParameterDirection.Input;
             commandResetFlag.Parameters.Add(ParamCodeQuest);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CreerPartie();
+            AfficherNom();
         }
     }
 }

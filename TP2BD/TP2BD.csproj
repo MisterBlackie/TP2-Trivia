@@ -65,10 +65,12 @@
     <Compile Include="ColorRoulette.Designer.cs">
       <DependentUpon>ColorRoulette.cs</DependentUpon>
     </Compile>
-    <Compile Include="Creer.cs">
+    <Compile Include="CreerPartie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Creer.Designer.cs" />
+    <Compile Include="CreerPartie.Designer.cs">
+      <DependentUpon>CreerPartie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,7 +100,9 @@
     <EmbeddedResource Include="ColorRoulette.resx">
       <DependentUpon>ColorRoulette.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Creer.resx" />
+    <EmbeddedResource Include="CreerPartie.resx">
+      <DependentUpon>CreerPartie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

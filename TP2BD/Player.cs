@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2BD
 {
-    class Player
+    public class Player
     {
         private string Alias { get; set; }
         private string Nom { get; set; }
@@ -19,6 +19,10 @@ namespace TP2BD
         }
 
         public string GetAlias() {
+            return Alias;
+        }
+
+        public override string ToString() {
             return Alias;
         }
     }
