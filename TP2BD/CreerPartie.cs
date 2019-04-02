@@ -68,7 +68,7 @@ namespace TP2BD
         }
 
         private void ChangerEtatCreateGameButton() {
-            if (LBX_AddedPlayer.Items.Count > 0)
+            if (LBX_AddedPlayer.Items.Count >= MINPLAYER && LBX_AddedPlayer.Items.Count <= MAXPLAYER)
                 BTN_CreateGame.Enabled = true;
             else
                 BTN_CreateGame.Enabled = false;

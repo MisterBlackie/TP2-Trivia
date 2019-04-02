@@ -86,7 +86,7 @@ namespace TP2BD
 
             OracleParameter orapamnumQuestion = new OracleParameter("numquestion", OracleDbType.Int32, 6);
             orapamnumQuestion.Direction = ParameterDirection.Input;
-            OracleCommand orapnum = new OracleCommand("SELECT numquestion FROM questions where EnonceQuestion =" + "'" + LB_Question.Text + "'", conn);
+            OracleCommand orapnum = new OracleCommand("SELECT numquestion,  FROM questions where EnonceQuestion =" + "'" + LB_Question.Text + "'", conn);
 
 
             OracleDataReader numReader = orapnum.ExecuteReader();
@@ -106,15 +106,15 @@ namespace TP2BD
                     RB_Rep1.Text = Reader.GetString(0);
                     NumeroBonneReponse = 1;
                 }
-                if (count == 1) {
+                else if (count == 1) {
                     RB_Rep2.Text = Reader.GetString(0);
                     NumeroBonneReponse = 2;
                 }
-                if (count == 2) {
+                else if (count == 2) {
                     RB_Rep3.Text = Reader.GetString(0);
                     NumeroBonneReponse = 3;
                 }
-                if (count == 3) {
+                else if (count == 3) {
                     RB_Rep4.Text = Reader.GetString(0);
                     NumeroBonneReponse = 4;
                 }
@@ -126,7 +126,7 @@ namespace TP2BD
 
         private void AfficherQuestion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ConfirmerReponse();
+            
         }
 
     
@@ -135,7 +135,10 @@ namespace TP2BD
         {
             if (!RB_Rep1.Checked && !RB_Rep2.Checked && !RB_Rep3.Checked && !RB_Rep4.Checked) {
                 DialogResult = DialogResult.None;
+                return;
             }
+
+            ConfirmerReponse();
         }
     }
 }

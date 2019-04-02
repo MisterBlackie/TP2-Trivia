@@ -33,7 +33,7 @@ namespace TP2BD
             if (Form.DialogResult != DialogResult.OK)
                 this.Close();
             else
-              ListeJoueur = Form.ListeJoueur;
+                ListeJoueur = Form.ListeJoueur;
         }
 
         private void ConnectToDB() {
@@ -52,21 +52,25 @@ namespace TP2BD
             }
         }
 
-        private void JouerTour() {
+        private void JouerTour() { 
+
             Roulette.Tourner();
             CouleurCat = Roulette.GetCouleur();
 
-            if (CouleurCat == ECodeCouleur.BL) {
-                // On permet au joueur de choisir sa couleur
-                Choix_Categorie m = new Choix_Categorie();
-                m.ShowDialog();
+            if (CouleurCat == ECodeCouleur.BL)
+            {
+                    // On permet au joueur de choisir sa couleur
+                    Choix_Categorie m = new Choix_Categorie();
+                    m.ShowDialog();
             }
 
             AfficherQuestion Form = new AfficherQuestion(ref conn, CouleurCat);
             Form.ShowDialog();
 
-            ListeJoueur.NextTour();
-            AfficherNom();
+            if (!Form.BienRepondu) {
+                ListeJoueur.NextTour();
+                AfficherNom();
+            }
         }
 
         private void AfficherNom() {

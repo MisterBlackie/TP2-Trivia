@@ -53,6 +53,12 @@
     <Compile Include="AfficherQuestion.Designer.cs">
       <DependentUpon>AfficherQuestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="AjouterJoueur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjouterJoueur.Designer.cs">
+      <DependentUpon>AjouterJoueur.cs</DependentUpon>
+    </Compile>
     <Compile Include="Choix_Categorie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </Compile>
     <EmbeddedResource Include="AfficherQuestion.resx">
       <DependentUpon>AfficherQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AjouterJoueur.resx">
+      <DependentUpon>AjouterJoueur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Choix_Categorie.resx">
       <DependentUpon>Choix_Categorie.cs</DependentUpon>
