@@ -71,5 +71,15 @@ namespace TP2BD
             else
                 return Liste.ElementAt(IndexPlyAyantTour);
         }
+
+        /// <summary>
+        /// Ajoute un point à une catégorie
+        /// </summary>
+        /// <param name="Code">Code de couleur de la catégorie</param>
+        public bool AddScoreToRoundPlayer(ECodeCouleur Code) {
+            Liste.ElementAt(IndexPlyAyantTour).Score[Code]++;
+
+            return Liste.ElementAt(IndexPlyAyantTour).Score[Code] >= 5;
+        }
     }
 }

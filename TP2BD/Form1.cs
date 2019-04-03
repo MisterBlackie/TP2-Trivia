@@ -27,13 +27,19 @@ namespace TP2BD
             ConnectToDB();
         }
 
-        private void CreerPartie() {
-            CreerPartie Form = new CreerPartie(conn);
-            Form.ShowDialog();
-            if (Form.DialogResult != DialogResult.OK)
-                this.Close();
+        private void AfficherMenu() {
+            Menu Form = new Menu(ref conn);
+
+            if (Form.ShowDialog() != DialogResult.OK)
+            {
+                Deconnect();
+                Close();
+            }
             else
-                ListeJoueur = Form.ListeJoueur;
+            {
+                ListeJoueur = Form.Liste;
+                AfficherNom();
+            }
         }
 
         private void ConnectToDB() {
@@ -52,8 +58,7 @@ namespace TP2BD
             }
         }
 
-        private void JouerTour() { 
-
+        private void JouerTour() {
             Roulette.Tourner();
             CouleurCat = Roulette.GetCouleur();
 
@@ -67,14 +72,98 @@ namespace TP2BD
             AfficherQuestion Form = new AfficherQuestion(ref conn, CouleurCat);
             Form.ShowDialog();
 
-            if (!Form.BienRepondu) {
+            if (!Form.BienRepondu)
+            {
+                LB_Reponse.ForeColor = Color.Red;
+                LB_Reponse.Text = "Mauvaise réponse !";
                 ListeJoueur.NextTour();
                 AfficherNom();
+            }
+            else {
+                LB_Reponse.ForeColor = Color.Green;
+                LB_Reponse.Text = "Bonne réponse !";
+            
+                AddScore(CouleurCat);
+                AfficherScore();
+                AfficherFaibleCategorie();
+            }
+        }
+
+        private void AfficherFaibleCategorie() {
+            ECodeCouleur Code = ListeJoueur.GetJoueur().GetLowestCategorie();
+            string NomCat = "";
+            switch (Code) {
+                case ECodeCouleur.B:
+                    NomCat = "Bleu";
+                    break;
+                case ECodeCouleur.J:
+                    NomCat = "Jaune";
+                    break;
+                case ECodeCouleur.R:
+                    NomCat = "Rouge";
+                    break;
+                case ECodeCouleur.V:
+                    NomCat = "Vert";
+                    break;
+            }
+            LB_FaibleCat.Text = NomCat;
+        }
+
+        private void AfficherScore() {
+            string CmdString = "SELECT Joueur.Alias, NomCategorie FROM Joueur INNER JOIN Score ON Score.Alias = Joueur.Alias INNER JOIN Categorie ON Categorie.CodeCategorie = Score.CodeCategorie";
+            OracleCommand command = new OracleCommand(CmdString, conn);
+            OracleDataAdapter da = new OracleDataAdapter(command);
+            DataSet DS = new DataSet();
+
+            da.Fill(DS);
+
+            DG.DataSource = DS.Tables[0];
+        }
+
+        private void AddScore(ECodeCouleur Code) {
+            // Faudrait un trigger au lieu de ça !!
+            if (ListeJoueur.AddScoreToRoundPlayer(Code)) {
+                OracleCommand commandAfficherScore = new OracleCommand("TRIVIA", conn);
+                commandAfficherScore.CommandType = CommandType.StoredProcedure;
+                commandAfficherScore.CommandText = "TRIVIA.AfficherScore";
+
+                OracleParameter returnValue = new OracleParameter("return", OracleDbType.RefCursor);
+                returnValue.Direction = ParameterDirection.ReturnValue;
+                commandAfficherScore.Parameters.Add(returnValue);
+
+                OracleParameter param = new OracleParameter("pAlias", OracleDbType.Varchar2);
+                param.Direction = ParameterDirection.Input;
+                param.Value = ListeJoueur.GetJoueur().GetAlias();
+                commandAfficherScore.Parameters.Add(param);
+
+                OracleDataReader Reader = commandAfficherScore.ExecuteReader();
+                while (Reader.Read())
+                {
+                    if (Reader.GetString(2) == Code.ToString())
+                        return; // La catégorie est déjà gagnée
+                }
+
+                OracleCommand command = new OracleCommand("TRIVIA", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "TRIVIA.CreerScore";
+
+                OracleParameter paramCat = new OracleParameter("pCodeCategorie", OracleDbType.Char);
+                paramCat.Direction = ParameterDirection.Input;
+                paramCat.Value = Code.ToString().ElementAt(0);
+                command.Parameters.Add(paramCat);
+
+                OracleParameter paramAlias = new OracleParameter("pAlias", OracleDbType.Varchar2);
+                paramAlias.Direction = ParameterDirection.Input;
+                paramAlias.Value = ListeJoueur.GetJoueur().GetAlias();
+                command.Parameters.Add(paramAlias);
+
+                command.ExecuteNonQuery();
             }
         }
 
         private void AfficherNom() {
             LB_NomJoueur.Text = ListeJoueur.GetJoueur().GetAlias();
+            AfficherFaibleCategorie();
         }
 
         private void Deconnect() {
@@ -100,6 +189,7 @@ namespace TP2BD
         private void button1_Click(object sender, EventArgs e)
         {
             ResetFlag();
+            ResetScore();
             this.Close();
         }
 
@@ -115,9 +205,16 @@ namespace TP2BD
             commandResetFlag.Parameters.Add(ParamCodeQuest);
         }
 
+        private void ResetScore() {
+            string cmdString = "DELETE FROM Score";
+            OracleCommand command = new OracleCommand(cmdString, conn);
+            command.ExecuteNonQuery();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            CreerPartie();
+            AfficherMenu();
+            AfficherScore();
             AfficherNom();
         }
     }

@@ -15,7 +15,6 @@ namespace TP2BD
     {
         private OracleConnection conn;
         private int IDQuestion;
-        private int NumeroBonneReponse; // Le numéro du radio button contenant la bonne réponse
         public bool BienRepondu = false;
 
         public AfficherQuestion(ref OracleConnection Connection, ECodeCouleur Categorie)
@@ -43,31 +42,12 @@ namespace TP2BD
             ParamCodeCat.Value = Form1.CouleurCat;
             ParamCodeCat.Direction = ParameterDirection.Input;
             commandAfficherQuest.Parameters.Add(ParamCodeCat);
-            MessageBox.Show(ParamCodeCat.Value.ToString());
 
             OracleDataReader Reader = commandAfficherQuest.ExecuteReader();
             while (Reader.Read()) {
 
                 LB_Question.Text = Reader.GetString(0);
                 IDQuestion = Reader.GetInt32(1);
-            }
-        }
-
-        
-        public void ConfirmerReponse() {
-            switch (NumeroBonneReponse) {
-                case 1:
-                    BienRepondu = RB_Rep1.Checked;
-                    break;
-                case 2:
-                    BienRepondu = RB_Rep2.Checked;
-                    break;
-                case 3:
-                    BienRepondu = RB_Rep3.Checked;
-                    break;
-                case 4:
-                    BienRepondu = RB_Rep4.Checked;
-                    break;
             }
         }
 
@@ -86,7 +66,7 @@ namespace TP2BD
 
             OracleParameter orapamnumQuestion = new OracleParameter("numquestion", OracleDbType.Int32, 6);
             orapamnumQuestion.Direction = ParameterDirection.Input;
-            OracleCommand orapnum = new OracleCommand("SELECT numquestion,  FROM questions where EnonceQuestion =" + "'" + LB_Question.Text + "'", conn);
+            OracleCommand orapnum = new OracleCommand("SELECT numquestion FROM questions where EnonceQuestion =" + "'" + LB_Question.Text + "'", conn);
 
 
             OracleDataReader numReader = orapnum.ExecuteReader();
@@ -104,24 +84,67 @@ namespace TP2BD
             {
                 if (count == 0) {
                     RB_Rep1.Text = Reader.GetString(0);
-                    NumeroBonneReponse = 1;
                 }
                 else if (count == 1) {
                     RB_Rep2.Text = Reader.GetString(0);
-                    NumeroBonneReponse = 2;
                 }
                 else if (count == 2) {
                     RB_Rep3.Text = Reader.GetString(0);
-                    NumeroBonneReponse = 3;
                 }
                 else if (count == 3) {
                     RB_Rep4.Text = Reader.GetString(0);
-                    NumeroBonneReponse = 4;
                 }
                 count++;
                
             }
 
+        }
+
+        private string getStringOfCheckedButton() {
+            if (RB_Rep1.Checked)
+                return RB_Rep1.Text;
+            else if (RB_Rep2.Checked)
+                return RB_Rep2.Text;
+            else if (RB_Rep3.Checked)
+                return RB_Rep3.Text;
+            else
+                return RB_Rep4.Text;
+
+        }
+
+        private bool ValiderReponse() {
+            string cmdString = "SELECT NumReponse FROM Reponse WHERE Description='" + getStringOfCheckedButton() + "'";
+            OracleCommand command = new OracleCommand(cmdString, conn);
+            OracleDataReader Reader = command.ExecuteReader();
+
+            int NumReponse = -1;
+            while (Reader.Read())
+                NumReponse = Reader.GetInt32(0);
+
+            OracleCommand validationCommand = new OracleCommand("TRIVIA", conn);
+            validationCommand.CommandText = "Trivia.ValiderReponse";
+            validationCommand.CommandType = CommandType.StoredProcedure;
+
+            OracleParameter param = new OracleParameter("NumeroReponse", OracleDbType.Int32);
+            param.Direction = ParameterDirection.Input;
+            param.Value = NumReponse;
+
+            OracleParameter returnValue = new OracleParameter("EstBonne", OracleDbType.RefCursor);
+            returnValue.Direction = ParameterDirection.ReturnValue;
+
+            validationCommand.Parameters.Add(returnValue);
+            validationCommand.Parameters.Add(param);
+
+            Reader.Dispose();
+            Reader = validationCommand.ExecuteReader();
+
+            while (Reader.Read()) {
+                if (Reader.GetString(0) == "O")
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void AfficherQuestion_FormClosing(object sender, FormClosingEventArgs e)
@@ -133,12 +156,14 @@ namespace TP2BD
 
         private void BTN_Confirm_Click(object sender, EventArgs e)
         {
-            if (!RB_Rep1.Checked && !RB_Rep2.Checked && !RB_Rep3.Checked && !RB_Rep4.Checked) {
+            if (!RB_Rep1.Checked && !RB_Rep2.Checked && !RB_Rep3.Checked && !RB_Rep4.Checked)
+            {
                 DialogResult = DialogResult.None;
                 return;
             }
-
-            ConfirmerReponse();
+            else {
+                BienRepondu = ValiderReponse();
+            }
         }
     }
 }

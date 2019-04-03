@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.Roulette = new TP2BD.ColorRoulette();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BTN_JouerTour = new System.Windows.Forms.Button();
             this.LB_NomJoueur = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.Roulette)).BeginInit();
+            this.LB_Reponse = new System.Windows.Forms.Label();
+            this.DG = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.LB_FaibleCat = new System.Windows.Forms.Label();
+            this.Roulette = new TP2BD.ColorRoulette();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Roulette)).BeginInit();
             this.SuspendLayout();
             // 
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // Roulette
-            // 
-            this.Roulette.BackColor = System.Drawing.Color.White;
-            this.Roulette.Location = new System.Drawing.Point(252, 12);
-            this.Roulette.Name = "Roulette";
-            this.Roulette.Size = new System.Drawing.Size(330, 426);
-            this.Roulette.TabIndex = 5;
-            this.Roulette.TabStop = false;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.LB_FaibleCat);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.LB_Reponse);
             this.groupBox1.Controls.Add(this.BTN_JouerTour);
             this.groupBox1.Controls.Add(this.LB_NomJoueur);
             this.groupBox1.Controls.Add(this.label1);
@@ -97,16 +97,17 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.DG);
             this.groupBox2.Location = new System.Drawing.Point(588, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 426);
+            this.groupBox2.Size = new System.Drawing.Size(234, 426);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Score";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(712, 445);
+            this.button1.Location = new System.Drawing.Point(745, 444);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -114,22 +115,71 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // LB_Reponse
+            // 
+            this.LB_Reponse.AutoSize = true;
+            this.LB_Reponse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_Reponse.Location = new System.Drawing.Point(26, 281);
+            this.LB_Reponse.Name = "LB_Reponse";
+            this.LB_Reponse.Size = new System.Drawing.Size(0, 25);
+            this.LB_Reponse.TabIndex = 3;
+            // 
+            // DG
+            // 
+            this.DG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DG.Location = new System.Drawing.Point(-6, 19);
+            this.DG.Name = "DG";
+            this.DG.Size = new System.Drawing.Size(240, 401);
+            this.DG.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 341);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(239, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Votre catégorie la plus faible est:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // LB_FaibleCat
+            // 
+            this.LB_FaibleCat.AutoSize = true;
+            this.LB_FaibleCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LB_FaibleCat.Location = new System.Drawing.Point(57, 374);
+            this.LB_FaibleCat.Name = "LB_FaibleCat";
+            this.LB_FaibleCat.Size = new System.Drawing.Size(0, 20);
+            this.LB_FaibleCat.TabIndex = 5;
+            // 
+            // Roulette
+            // 
+            this.Roulette.BackColor = System.Drawing.Color.White;
+            this.Roulette.Location = new System.Drawing.Point(252, 12);
+            this.Roulette.Name = "Roulette";
+            this.Roulette.Size = new System.Drawing.Size(330, 426);
+            this.Roulette.TabIndex = 5;
+            this.Roulette.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 488);
+            this.ClientSize = new System.Drawing.Size(832, 474);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Roulette);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Roulette)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Roulette)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -143,6 +193,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label LB_Reponse;
+        private System.Windows.Forms.DataGridView DG;
+        private System.Windows.Forms.Label LB_FaibleCat;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -29,16 +29,18 @@ namespace TP2BD
         /// Rajoute un joueur à la base de donnée
         /// </summary>
         /// <returns></returns>
-        private Player AddPlayer() {
-            // Creer Form
-            // Renvoyer joueur
-            throw new NotImplementedException();
+        private void AddPlayer() {
+            AjouterJoueur Form = new AjouterJoueur(ref conn);
+            Form.ShowDialog();
         }
 
         /// <summary>
         /// Affiche les joueurs de la base de donnée dans la list box
         /// </summary>
         private void AfficherJoueur() {
+            LBX_AddedPlayer.Items.Clear();
+            LBX_AvailablePlayer.Items.Clear();
+
             string CmdText = "SELECT * FROM Joueur";
             OracleCommand Command = new OracleCommand(CmdText, conn);
 
@@ -97,11 +99,8 @@ namespace TP2BD
 
         private void BTN_CreatePlayer_Click(object sender, EventArgs e)
         {
-            Player p = AddPlayer();
-            if (p != null)
-            {
-                LBX_AvailablePlayer.Items.Add(p);
-            }
+            AddPlayer();
+            AfficherJoueur();
         }
 
         private void BTN_CreateGame_Click(object sender, EventArgs e)

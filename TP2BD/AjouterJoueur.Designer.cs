@@ -40,7 +40,7 @@
             // TB_Alias
             // 
             this.TB_Alias.Location = new System.Drawing.Point(131, 34);
-            this.TB_Alias.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TB_Alias.Margin = new System.Windows.Forms.Padding(6);
             this.TB_Alias.Name = "TB_Alias";
             this.TB_Alias.Size = new System.Drawing.Size(307, 29);
             this.TB_Alias.TabIndex = 0;
@@ -48,18 +48,18 @@
             // TB_Nom
             // 
             this.TB_Nom.Location = new System.Drawing.Point(131, 116);
-            this.TB_Nom.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TB_Nom.Margin = new System.Windows.Forms.Padding(6);
             this.TB_Nom.Name = "TB_Nom";
             this.TB_Nom.Size = new System.Drawing.Size(307, 29);
-            this.TB_Nom.TabIndex = 1;
+            this.TB_Nom.TabIndex = 2;
             // 
             // TB_Prenom
             // 
             this.TB_Prenom.Location = new System.Drawing.Point(131, 75);
-            this.TB_Prenom.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TB_Prenom.Margin = new System.Windows.Forms.Padding(6);
             this.TB_Prenom.Name = "TB_Prenom";
             this.TB_Prenom.Size = new System.Drawing.Size(307, 29);
-            this.TB_Prenom.TabIndex = 2;
+            this.TB_Prenom.TabIndex = 1;
             // 
             // label1
             // 
@@ -91,12 +91,14 @@
             // 
             // BTN_Confirm
             // 
+            this.BTN_Confirm.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BTN_Confirm.Location = new System.Drawing.Point(313, 154);
             this.BTN_Confirm.Name = "BTN_Confirm";
             this.BTN_Confirm.Size = new System.Drawing.Size(125, 41);
-            this.BTN_Confirm.TabIndex = 6;
+            this.BTN_Confirm.TabIndex = 3;
             this.BTN_Confirm.Text = "Confirmer";
             this.BTN_Confirm.UseVisualStyleBackColor = true;
+            this.BTN_Confirm.Click += new System.EventHandler(this.BTN_Confirm_Click);
             // 
             // AjouterJoueur
             // 
@@ -112,7 +114,7 @@
             this.Controls.Add(this.TB_Nom);
             this.Controls.Add(this.TB_Alias);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "AjouterJoueur";
             this.Text = "Ajouter un joueur";
             this.ResumeLayout(false);

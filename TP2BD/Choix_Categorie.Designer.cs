@@ -75,7 +75,7 @@
             this.BTN_Jeux.Name = "BTN_Jeux";
             this.BTN_Jeux.Size = new System.Drawing.Size(191, 81);
             this.BTN_Jeux.TabIndex = 0;
-            this.BTN_Jeux.Text = "Jeux Vidéo";
+            this.BTN_Jeux.Text = "Jeu Vidéo";
             this.BTN_Jeux.UseVisualStyleBackColor = false;
             this.BTN_Jeux.Click += new System.EventHandler(this.BTN_Jeux_Click);
             // 
@@ -85,9 +85,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(428, 18);
+            this.label1.Size = new System.Drawing.Size(431, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Choisissez la catégorie dans laquelle vous souhaiter progresser";
+            this.label1.Text = "Choisissez la catégorie dans laquelle vous souhaitez progresser";
             // 
             // Choix_Categorie
             // 
